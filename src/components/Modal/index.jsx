@@ -1,4 +1,4 @@
-import React, {Component, useEffect} from 'react';
+import React, {useEffect, useCallback} from 'react';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 
@@ -24,28 +24,21 @@ const Children = styled.div`
 const modalRoot = document.querySelector('#modal-root');
 
 export function Modal ({onClose, children}){
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
-  },[])
-  // componentDidMount() {
-  //   window.addEventListener('keydown', this.handleKeyDown);
-  // }
-  //
-  // componentWillUnmount() {
-  //   window.removeEventListener('keydown', this.handleKeyDown);
-  // }
 
-  const handleKeyDown = e => {
+  const handleKeyDown = useCallback(e => {
     if (e.code === 'Escape') {
       onClose();
     }
-  };
+  }, [onClose])
 
   const handleBackdropClick = event => {
     if (event.currentTarget === event.target) {
       onClose();
     }
   };
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown)
+  },[handleKeyDown])
 
     return createPortal(
       <Parent onClick={handleBackdropClick}>
