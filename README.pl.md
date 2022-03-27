@@ -19,9 +19,7 @@ Ten projekt został stworzony przy pomocy [Create React App](https://github.com/
 
 Produkcyjna wersja projektu będzie automatycznie poddana pracy lintera, budowana i deployowana na GitHub Pages, w gałęzi `gh-pages` za każdym razem, gdy aktualizuje się gałąź `main`, na przykład po bezpośrednim pushu lub przyjętym pull requeście. W tym celu należy w pliku `package.json` zredagować pole `homepage`, zamieniając `your_username` i `your_repo_name` na swoje nazwy i wysłać zmiany do GitHub.
 
-```json
-"homepage": "https://your_username.github.io/your_repo_name/"
-```
+
 
 Następnie należy przejść do ustawień repozytorium GitHub (`Settings` > `Pages`) i wydystrybuować wersję produkcyjną plików z folderu `/root` gałęzi `gh-pages`, jeśli nie zostało to wykonane automatycznie.
 
