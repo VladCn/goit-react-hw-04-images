@@ -48,6 +48,7 @@ export function App() {
   };
 
   async function getPhoto(search, newPage = 1) {
+    console.log(data)
     try {
       setLoading(true);
       const response = await axios.get(
@@ -62,7 +63,8 @@ export function App() {
           largeImageURL,
         })
       );
-      setData(dataRes)
+      console.log(dataRes)
+      setData(prev => [...prev, ...dataRes])
       setTotal(response.data.total)
       setLoading(false)
 
